@@ -2495,3 +2495,190 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .promo-carousel-content { animation: none; }
   .promo-progress-bar { animation: none; transform: scaleX(1); }
 }
+
+
+/* Ultra-slim promo ribbon: about half the main navigation header height */
+.promo-carousel-inner {
+  min-height: 41px;
+  gap: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.promo-carousel-content {
+  min-height: 31px;
+  gap: 9px;
+  animation-duration: .3s;
+}
+.promo-icon-wrap {
+  display: none;
+}
+.promo-copy {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  max-width: none;
+  min-width: 0;
+}
+.promo-eyebrow {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 8px;
+  letter-spacing: .8px;
+  line-height: 1.2;
+}
+.promo-copy h2 {
+  overflow: hidden;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -.25px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.promo-copy p {
+  display: none;
+}
+.promo-cta {
+  flex: 0 0 auto;
+  gap: 3px;
+  margin-left: 3px;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.promo-cta svg {
+  width: 12px;
+  height: 12px;
+}
+.promo-carousel-controls {
+  flex-direction: row;
+  gap: 7px;
+  padding-left: 10px;
+}
+.promo-carousel-arrows {
+  gap: 4px;
+}
+.promo-carousel-arrows button,
+.promo-pause {
+  width: 25px;
+  height: 25px;
+  flex-basis: 25px;
+}
+.promo-carousel-arrows svg,
+.promo-pause svg {
+  width: 13px;
+  height: 13px;
+}
+.promo-carousel-dots {
+  min-height: 8px;
+  gap: 4px;
+}
+.promo-dot {
+  width: 5px;
+  height: 5px;
+}
+.promo-dot-active {
+  width: 14px;
+}
+.promo-progress {
+  height: 2px;
+}
+@media (max-width: 760px) {
+  .promo-carousel-inner {
+    min-height: 41px;
+    gap: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .promo-carousel-content {
+    gap: 6px;
+    min-width: 0;
+  }
+  .promo-copy {
+    gap: 7px;
+    min-width: 0;
+  }
+  .promo-eyebrow {
+    font-size: 7px;
+    letter-spacing: .45px;
+  }
+  .promo-copy h2 {
+    font-size: 12px;
+  }
+  .promo-cta {
+    font-size: 8px;
+  }
+  .promo-carousel-controls {
+    gap: 5px;
+    padding-left: 7px;
+  }
+  .promo-carousel-arrows button,
+  .promo-pause {
+    width: 22px;
+    height: 22px;
+    flex-basis: 22px;
+  }
+}
+@media (max-width: 560px) {
+  .promo-carousel-inner {
+    display: flex;
+    min-height: 42px;
+    padding: 4px 0;
+  }
+  .promo-carousel-content {
+    align-items: center;
+    min-height: 30px;
+  }
+  .promo-copy {
+    flex-wrap: wrap;
+    column-gap: 6px;
+    row-gap: 1px;
+    align-content: center;
+  }
+  .promo-eyebrow {
+    font-size: 6px;
+    line-height: 1.1;
+  }
+  .promo-copy h2 {
+    max-width: 100%;
+    font-size: 11px;
+    white-space: normal;
+    line-height: 1.1;
+  }
+  .promo-cta {
+    display: none;
+  }
+  .promo-carousel-controls {
+    flex: 0 0 auto;
+    position: static;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 0 0 5px;
+    border-left: 1px solid rgba(235,229,206,.22);
+  }
+  .promo-carousel-arrows {
+    gap: 2px;
+  }
+  .promo-carousel-arrows button,
+  .promo-pause {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+  .promo-carousel-arrows svg,
+  .promo-pause svg {
+    width: 11px;
+    height: 11px;
+  }
+  .promo-carousel-dots {
+    min-height: 5px;
+    gap: 3px;
+  }
+  .promo-dot {
+    width: 4px;
+    height: 4px;
+  }
+  .promo-dot-active {
+    width: 10px;
+  }
+}
