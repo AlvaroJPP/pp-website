@@ -1,13 +1,29 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
-  Search,
-  SlidersHorizontal,
+  CarFront,
+  CheckCircle2,
+  ClipboardList,
+  Copy,
   PackageSearch,
+  Search,
+  Send,
+  Share2,
+  SlidersHorizontal,
   X,
 } from "lucide-react";
 import { categories, products } from "../data/site.js";
 import { Eyebrow, PageIntro } from "../components/SiteLayout.jsx";
+
+const emptyVehicleForm = {
+  brand: "",
+  model: "",
+  year: "",
+  version: "",
+  engine: "",
+  partCode: "",
+  notes: "",
+};
 
 function normalizeText(value) {
   return String(value ?? "")
@@ -16,7 +32,7 @@ function normalizeText(value) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function ProductCard({ product }) {
+function ProductCard({ product, onConsult }) {
   return (
     <article className="product-card">
       <div className="product-card-image">
@@ -40,18 +56,285 @@ function ProductCard({ product }) {
             <span className="availability-dot" />
             Consultar disponibilidade
           </span>
-          <a className="text-link" href="#/localizacao" aria-label={`Consultar ${product.name} na loja`}>
+          <button
+            className="text-link product-consult-button"
+            type="button"
+            onClick={() => onConsult(product)}
+            aria-label={`Preparar consulta de ${product.name}`}
+          >
             Consultar <ArrowRight size={15} />
-          </a>
+          </button>
         </div>
       </div>
     </article>
   );
 }
 
+function buildConsultationMessage(product, form) {
+  const vehicle = [
+    `Marca: ${form.brand.trim()}`,
+    `Modelo: ${form.model.trim()}`,
+    `Ano: ${form.year.trim()}`,
+    form.version.trim() ? `Versão: ${form.version.trim()}` : null,
+    form.engine.trim() ? `Motorização: ${form.engine.trim()}` : null,
+    form.partCode.trim() ? `Código/referência da peça: ${form.partCode.trim()}` : null,
+  ].filter(Boolean);
+
+  return [
+    "Olá, SP Auto Peças! Gostaria de consultar uma peça.",
+    "",
+    `Peça: ${product.name}`,
+    `Categoria: ${product.category}`,
+    "",
+    "Dados do veículo:",
+    ...vehicle,
+    form.notes.trim() ? `Informações adicionais: ${form.notes.trim()}` : null,
+    "",
+    "Poderiam confirmar a compatibilidade, o preço e a disponibilidade? Obrigado(a)!",
+  ].filter((line) => line !== null).join("\n");
+}
+
+function ConsultationDialog({ product, onClose }) {
+  const [form, setForm] = useState(emptyVehicleForm);
+  const [generatedMessage, setGeneratedMessage] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("info");
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  const updateField = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
+    setStatusMessage("");
+  };
+
+  const copyMessage = async (message) => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(message);
+      } else {
+        const helper = document.createElement("textarea");
+        helper.value = message;
+        helper.setAttribute("readonly", "");
+        helper.style.position = "fixed";
+        helper.style.opacity = "0";
+        document.body.appendChild(helper);
+        helper.select();
+        const copied = document.execCommand("copy");
+        document.body.removeChild(helper);
+        if (!copied) throw new Error("Clipboard indisponível");
+      }
+      setStatusType("success");
+      setStatusMessage("Mensagem copiada. Agora você pode colar e enviar pelo aplicativo ou canal de atendimento da loja.");
+    } catch {
+      setGeneratedMessage(message);
+      setStatusType("info");
+      setStatusMessage("Não foi possível copiar automaticamente. A mensagem está disponível abaixo para você selecionar e copiar.");
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const message = buildConsultationMessage(product, form);
+    setGeneratedMessage(message);
+    setStatusMessage("");
+
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share({
+          title: "Consulta de peça — SP Auto Peças",
+          text: message,
+        });
+        setStatusType("success");
+        setStatusMessage("Compartilhamento aberto. Confira a mensagem no aplicativo escolhido antes de enviar.");
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+        // If native sharing is unavailable or fails, use clipboard as a fallback.
+      }
+    }
+
+    await copyMessage(message);
+  };
+
+  const handleCopyAgain = () => copyMessage(generatedMessage);
+
+  return (
+    <div
+      className="consultation-backdrop"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <section
+        className="consultation-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="consultation-title"
+        aria-describedby="consultation-description"
+      >
+        <header className="consultation-header">
+          <div className="consultation-heading">
+            <span className="consultation-heading-icon"><ClipboardList size={22} /></span>
+            <div>
+              <span className="consultation-eyebrow">Consulta de peça</span>
+              <h2 id="consultation-title">Vamos identificar a aplicação.</h2>
+            </div>
+          </div>
+          <button className="consultation-close" type="button" onClick={onClose} aria-label="Fechar consulta">
+            <X size={21} />
+          </button>
+        </header>
+
+        <div className="consultation-body">
+          <div className="consultation-selected-product">
+            <span className="consultation-product-icon"><CarFront size={22} /></span>
+            <div>
+              <span>Item selecionado · referência ilustrativa</span>
+              <strong>{product.name}</strong>
+              <small>{product.category}</small>
+            </div>
+          </div>
+
+          <p id="consultation-description" className="consultation-intro">
+            Preencha os dados conhecidos do veículo para preparar uma mensagem mais completa. Não precisa saber tudo: versão, motor e código da peça são opcionais.
+          </p>
+
+          <form className="consultation-form" onSubmit={handleSubmit}>
+            <div className="consultation-form-grid">
+              <label>
+                Marca do veículo <span aria-hidden="true">*</span>
+                <input
+                  name="brand"
+                  value={form.brand}
+                  onChange={updateField}
+                  placeholder="Ex.: Fiat"
+                  autoComplete="off"
+                  required
+                />
+              </label>
+              <label>
+                Modelo <span aria-hidden="true">*</span>
+                <input
+                  name="model"
+                  value={form.model}
+                  onChange={updateField}
+                  placeholder="Ex.: Argo"
+                  autoComplete="off"
+                  required
+                />
+              </label>
+              <label>
+                Ano <span aria-hidden="true">*</span>
+                <input
+                  name="year"
+                  value={form.year}
+                  onChange={updateField}
+                  placeholder="Ex.: 2020"
+                  inputMode="numeric"
+                  min="1900"
+                  max={new Date().getFullYear() + 1}
+                  type="number"
+                  required
+                />
+              </label>
+              <label>
+                Versão (opcional)
+                <input
+                  name="version"
+                  value={form.version}
+                  onChange={updateField}
+                  placeholder="Ex.: Drive"
+                  autoComplete="off"
+                />
+              </label>
+              <label>
+                Motor/motorização (opcional)
+                <input
+                  name="engine"
+                  value={form.engine}
+                  onChange={updateField}
+                  placeholder="Ex.: 1.3 flex"
+                  autoComplete="off"
+                />
+              </label>
+              <label>
+                Código da peça (opcional)
+                <input
+                  name="partCode"
+                  value={form.partCode}
+                  onChange={updateField}
+                  placeholder="Se tiver a referência"
+                  autoComplete="off"
+                />
+              </label>
+            </div>
+
+            <label className="consultation-notes">
+              Observações (opcional)
+              <textarea
+                name="notes"
+                value={form.notes}
+                onChange={updateField}
+                placeholder="Ex.: peça dianteira, lado esquerdo; posso enviar uma foto depois."
+                rows={3}
+              />
+            </label>
+
+            <div className="consultation-actions">
+              <button className="button button-primary" type="submit">
+                <Share2 size={17} /> Preparar consulta
+              </button>
+              <button className="button button-outline" type="button" onClick={onClose}>
+                Cancelar
+              </button>
+            </div>
+            <p className="consultation-privacy-note">
+              Seus dados ficam apenas nesta página enquanto a consulta está aberta. Nenhum pedido é enviado automaticamente e não há confirmação de estoque ou preço.
+            </p>
+          </form>
+
+          {statusMessage ? (
+            <div className={`consultation-status consultation-status-${statusType}`} role="status">
+              {statusType === "success" ? <CheckCircle2 size={18} /> : <ClipboardList size={18} />}
+              <span>{statusMessage}</span>
+            </div>
+          ) : null}
+
+          {generatedMessage ? (
+            <div className="consultation-message-preview">
+              <label htmlFor="consultation-message">Mensagem preparada</label>
+              <textarea id="consultation-message" value={generatedMessage} readOnly rows={9} onFocus={(event) => event.target.select()} />
+              <button className="button button-outline" type="button" onClick={handleCopyAgain}>
+                <Copy size={16} /> Copiar mensagem novamente
+              </button>
+            </div>
+          ) : null}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export default function Catalogo() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const closeConsultation = useCallback(() => setSelectedProduct(null), []);
+  const openConsultation = (product) => setSelectedProduct(product);
 
   const visibleProducts = useMemo(() => {
     const term = normalizeText(search.trim());
@@ -137,7 +420,7 @@ export default function Catalogo() {
           {visibleProducts.length > 0 ? (
             <div className="product-grid">
               {visibleProducts.map((product) => (
-                <ProductCard key={product.name} product={product} />
+                <ProductCard key={product.name} product={product} onConsult={openConsultation} />
               ))}
             </div>
           ) : (
@@ -182,6 +465,10 @@ export default function Catalogo() {
           </div>
         </div>
       </section>
+
+      {selectedProduct ? (
+        <ConsultationDialog key={selectedProduct.name} product={selectedProduct} onClose={closeConsultation} />
+      ) : null}
     </>
   );
 }
