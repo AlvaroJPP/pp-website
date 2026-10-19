@@ -413,6 +413,33 @@ h1, h2, h3 { font-family: Manrope, sans-serif; }
   .guide-disclaimer-inner { padding: 19px; }
 }
 
+
+/* Additional content panels */
+.catalog-help-panel { display: flex; align-items: center; gap: 17px; margin-top: 22px; padding: 24px; border: 1px solid var(--line); border-radius: 11px; background: #fff; }
+.catalog-help-icon { display: grid; width: 46px; height: 46px; flex: 0 0 auto; place-items: center; border-radius: 10px; background: #fff0ef; color: var(--red); }
+.catalog-help-copy { flex: 1 1 auto; }
+.catalog-help-copy strong { display: block; margin-bottom: 5px; font-size: 14px; }
+.catalog-help-copy p { max-width: 650px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.about-compatibility-section { background: var(--paper); }
+.about-compatibility-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 60px; align-items: start; }
+.about-compatibility-grid h2 { margin-bottom: 15px; font-size: clamp(29px, 3.4vw, 39px); line-height: 1.16; letter-spacing: -1.4px; }
+.about-compatibility-grid > div:first-child > p { margin-bottom: 24px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+.about-compatibility-grid .faq-list { background: #fff; border: 1px solid var(--line); border-radius: 11px; padding: 0 20px; }
+
+@media (max-width: 900px) {
+  .catalog-help-panel { align-items: flex-start; flex-wrap: wrap; }
+  .catalog-help-copy { flex-basis: calc(100% - 70px); }
+  .catalog-help-panel .button { margin-left: 63px; }
+  .about-compatibility-grid { gap: 30px; }
+}
+@media (max-width: 640px) {
+  .catalog-help-panel { gap: 12px; padding: 19px; }
+  .catalog-help-copy { flex-basis: calc(100% - 60px); }
+  .catalog-help-panel .button { width: 100%; margin-left: 0; }
+  .about-compatibility-grid { grid-template-columns: 1fr; gap: 27px; }
+  .about-compatibility-grid .faq-list { padding: 0 15px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
