@@ -2499,7 +2499,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 
 /* Ultra-slim promo ribbon: about half the main navigation header height */
 .promo-carousel-inner {
-  min-height: 41px;
+  min-height: 57px;
   gap: 14px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2585,7 +2585,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 @media (max-width: 760px) {
   .promo-carousel-inner {
-    min-height: 41px;
+    min-height: 57px;
     gap: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -2622,7 +2622,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 @media (max-width: 560px) {
   .promo-carousel-inner {
     display: flex;
-    min-height: 42px;
+    min-height: 57px;
     padding: 4px 0;
   }
   .promo-carousel-content {
@@ -2651,8 +2651,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .promo-carousel-controls {
     flex: 0 0 auto;
     position: static;
-    flex-direction: column;
-    gap: 3px;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
     padding: 0 0 0 5px;
     border-left: 1px solid rgba(235,229,206,.22);
   }
