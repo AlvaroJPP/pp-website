@@ -1,6 +1,6 @@
 # SP Auto Peças — React + Vite
 
-Landing page responsiva da **SP Auto Peças**, em Vila dos Cabanos, Barcarena — PA, feita com React e Vite.
+Site institucional multipágina da **SP Auto Peças**, em Vila dos Cabanos, Barcarena — PA.
 
 ## Tecnologias
 
@@ -8,6 +8,16 @@ Landing page responsiva da **SP Auto Peças**, em Vila dos Cabanos, Barcarena �
 - Vite para desenvolvimento e build
 - Lucide React para ícones
 - CSS responsivo
+- Navegação por hash para funcionar no GitHub Pages sem configuração de rotas no servidor
+
+## Páginas
+
+- **Início** — banner panorâmico, apresentação e categorias em destaque
+- **Catálogo** — categorias de peças e busca por termos
+- **Sobre a loja** — informações e orientações para identificar a peça correta
+- **Contato e localização** — endereço informado, mapa, rota e Street View
+
+O catálogo apresenta grupos de produtos e exemplos para consulta; não representa estoque, preços ou disponibilidade em tempo real.
 
 ## Rodar localmente
 
@@ -18,7 +28,7 @@ npm install
 npm run dev
 ```
 
-Para validar a versão de produção localmente:
+Para gerar e testar a versão de produção:
 
 ```bash
 npm run build
@@ -27,26 +37,23 @@ npm run preview
 
 ## Publicação no GitHub Pages
 
-O workflow em `.github/workflows/pages.yml` instala as dependências, executa o build do Vite e publica a pasta `dist` automaticamente ao enviar alterações para a branch `main`.
+O workflow em `.github/workflows/pages.yml` compila o site e publica a pasta `dist` ao enviar alterações para a branch `main`.
 
 1. No GitHub, abra **Settings → Pages**.
 2. Em **Build and deployment**, selecione **GitHub Actions** como fonte.
-3. Abra a aba **Actions** e verifique o resultado de **Deploy SP Auto Peças website**.
+3. Acompanhe **Actions → Deploy SP Auto Peças website**.
 
 Endereço esperado após uma publicação bem-sucedida:
 https://alvarojpp.github.io/pp-website/
 
-## Conteúdo
+## Estrutura do código
 
-- Página inicial e apresentação da loja
-- Categorias ilustrativas de peças e acessórios
-- Seção sobre a empresa
-- Endereço completo e mapa incorporado
-- Link para abrir a rota no Google Maps
-- Layout responsivo com menu móvel
+- `src/components/SiteLayout.jsx` — navegação, logotipo e rodapé
+- `src/pages/Home.jsx` — página inicial
+- `src/pages/Catalogo.jsx` — categorias e filtro de busca
+- `src/pages/Sobre.jsx` — apresentação da loja
+- `src/pages/Localizacao.jsx` — mapa e localização
+- `src/data/site.js` — dados das categorias, endereço e links do mapa
+- `src/styles.css` — estilos e responsividade
 
-## Personalização
-
-Os componentes estão em `src/App.jsx`, os estilos em `src/styles.css` e a entrada React em `src/main.jsx`. O endereço da loja e os links do mapa também são definidos no componente.
-
-As categorias são exemplos visuais; confirme catálogo, disponibilidade, horário de funcionamento e compatibilidade diretamente com a loja.
+Confirme com a loja a disponibilidade, os preços, os horários e a compatibilidade dos produtos antes da compra.
