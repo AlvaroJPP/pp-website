@@ -13,7 +13,7 @@ Site institucional multipágina da **SP Auto Peças**, em Vila dos Cabanos, Barc
 ## Páginas
 
 - **Início** — banner panorâmico, apresentação e categorias em destaque
-- **Catálogo** — categorias de peças, busca por termos e orientação para pesquisar
+- **Catálogo** — lista de 22 itens de referência, busca por nome/descrição e filtros rápidos por categoria
 - **Dicas automotivas** — checklist para identificar peças, orientações por categoria e perguntas frequentes
 - **Sobre a loja** — informações e orientações para identificar a peça correta
 - **Contato e localização** — endereço informado, mapa, rota e Street View
