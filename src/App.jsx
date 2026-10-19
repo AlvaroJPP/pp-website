@@ -80,10 +80,10 @@ const points = [
 
 function Brand({ footer = false }) {
   return (
-    <a className="brand" href="#inicio" aria-label="PP Auto Peças — início">
-      <span className="brand-mark">PP</span>
+    <a className="brand" href="#inicio" aria-label="SP Auto Peças — início">
+      <span className="brand-mark">SP</span>
       <span className="brand-wording">
-        PP AUTO PEÇAS
+        SP AUTO PEÇAS
         <small>PEÇAS E ACESSÓRIOS</small>
       </span>
     </a>
@@ -156,7 +156,7 @@ function App() {
                 </h1>
                 <p className="hero-copy">
                   Encontre peças e acessórios automotivos para cuidar do seu
-                  veículo. Conte com a PP Auto Peças em Vila dos Cabanos,
+                  veículo. Conte com a SP Auto Peças em Vila dos Cabanos,
                   Barcarena.
                 </p>
                 <div className="hero-actions">
@@ -264,7 +264,7 @@ function App() {
               <Eyebrow>Quem somos</Eyebrow>
               <h2>Mais praticidade para manter você em movimento.</h2>
               <p>
-                A PP Auto Peças está localizada em Vila dos Cabanos, Barcarena,
+                A SP Auto Peças está localizada em Vila dos Cabanos, Barcarena,
                 Pará. Nosso objetivo é facilitar a busca por peças e acessórios
                 automotivos, com atendimento próximo para ajudar você a
                 encontrar o que precisa.
@@ -294,7 +294,7 @@ function App() {
               <Eyebrow>Venha nos visitar</Eyebrow>
               <h2>Estamos perto de você.</h2>
               <p className="location-intro">
-                Passe na PP Auto Peças em Vila dos Cabanos, Barcarena. Consulte
+                Passe na SP Auto Peças em Vila dos Cabanos, Barcarena. Consulte
                 a disponibilidade do produto antes de se deslocar.
               </p>
               <div className="address-row">
@@ -322,7 +322,7 @@ function App() {
             </div>
             <div className="map-frame">
               <iframe
-                title={`Mapa da localização da PP Auto Peças: ${address}`}
+                title={`Mapa da localização da SP Auto Peças: ${address}`}
                 src={mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -337,7 +337,7 @@ function App() {
             <div className="cta-panel">
               <div>
                 <h2>Precisa encontrar uma peça?</h2>
-                <p>Visite a PP Auto Peças e consulte as opções para o seu veículo.</p>
+                <p>Visite a SP Auto Peças e consulte as opções para o seu veículo.</p>
               </div>
               <a className="button button-primary" href={mapsUrl} target="_blank" rel="noreferrer">
                 Ver como chegar <ArrowUpRight size={16} />
@@ -357,7 +357,7 @@ function App() {
             </p>
           </div>
           <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} PP Auto Peças. Todos os direitos reservados.</span>
+            <span>© {new Date().getFullYear()} SP Auto Peças. Todos os direitos reservados.</span>
             <a href="#inicio">Voltar ao topo <ArrowDownRight size={14} /></a>
           </div>
         </div>
