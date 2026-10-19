@@ -183,7 +183,7 @@ function App() {
               </span>
             </div>
           </div>
-        </section>section>
+        </section>
 
         <section className="benefits-strip" aria-label="Diferenciais">
           <div className="container benefit-grid">
