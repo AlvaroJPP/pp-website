@@ -265,3 +265,11 @@ export const benefits = [
     subtitle: "Em Vila dos Cabanos",
   },
 ];
+
+// Telefone público listado para a empresa no endereço informado.
+// Confirme se este número está cadastrado no WhatsApp Business.
+export const whatsappNumber = "559137544940";
+export const whatsappMessage =
+  "Olá, SP Auto Peças! Gostaria de consultar uma peça ou acessório automotivo.";
+export const whatsappUrl =
+  `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
