@@ -1,4 +1,4 @@
-name: Deploy PP Auto Peças website
+name: Deploy SP Auto Peças website
 
 on:
   push:
