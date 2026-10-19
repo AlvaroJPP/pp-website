@@ -5,6 +5,7 @@ import { mapsUrl } from "../data/site.js";
 const navigation = [
   { label: "Início", href: "#/" },
   { label: "Catálogo", href: "#/catalogo" },
+  { label: "Dicas automotivas", href: "#/dicas" },
   { label: "Sobre a loja", href: "#/sobre" },
   { label: "Contato e localização", href: "#/localizacao" },
 ];
