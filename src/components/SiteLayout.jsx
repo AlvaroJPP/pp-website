@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, MapPin, Menu, X } from "lucide-react";
-import { mapsUrl } from "../data/site.js";
+import { mapsUrl, whatsappUrl } from "../data/site.js";
 
 const navigation = [
   { label: "Início", href: "#/" },
@@ -35,6 +35,40 @@ export function PageIntro({ eyebrow, title, description }) {
         {description ? <p>{description}</p> : null}
       </div>
     </section>
+  );
+}
+
+function WhatsAppFloatingButton() {
+  return (
+    <a
+      className="whatsapp-float"
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Falar com a SP Auto Peças pelo WhatsApp"
+      title="Falar com a SP Auto Peças pelo WhatsApp"
+    >
+      <svg
+        className="whatsapp-float-icon"
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M16 3.1A12.1 12.1 0 0 0 5.6 21.4L4 28l6.8-1.8A12.1 12.1 0 1 0 16 3.1Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11.4 9.5c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.4.4-1.3 1.2-1.3 3s1.3 3.4 1.5 3.6c.2.2 2.5 4 6.3 5.4 3.1 1.2 3.8 1 4.5.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5l-2.5-1.2c-.3-.1-.6-.2-.8.2-.2.4-1 1.2-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.8-1.1-1-1.8-2.2-2-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.2-.4.4-.7.1-.3 0-.5 0-.7l-1.2-2.5Z"
+          fill="currentColor"
+          transform="translate(3.6 2.5) scale(.9)"
+        />
+      </svg>
+      <span className="whatsapp-float-label">Fale pelo WhatsApp</span>
+    </a>
   );
 }
 
@@ -115,6 +149,8 @@ export default function SiteLayout({ children, currentRoute }) {
           </div>
         </div>
       </footer>
+
+      <WhatsAppFloatingButton />
     </>
   );
 }
