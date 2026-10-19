@@ -1,5 +1,17 @@
-import { useState } from "react";
-import { ArrowUpRight, MapPin, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
+  Menu,
+  Pause,
+  Play,
+  ShieldCheck,
+  Tag,
+  Wrench,
+  X,
+} from "lucide-react";
 import { mapsUrl, whatsappUrl } from "../data/site.js";
 
 const navigation = [
@@ -70,7 +82,10 @@ const promoSlides = [
 
 function PromoCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocusWithin, setIsFocusWithin] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
+  const isPaused = isHovered || isFocusWithin || userPaused;
   const activeSlide = promoSlides[activeIndex];
   const ActiveIcon = activeSlide.icon;
 
@@ -96,7 +111,7 @@ function PromoCarousel() {
 
   const handleBlur = (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
-      setIsPaused(false);
+      setIsFocusWithin(false);
     }
   };
 
@@ -105,9 +120,9 @@ function PromoCarousel() {
       className={`promo-carousel ${activeSlide.theme}`}
       aria-label="Ofertas e destaques da SP Auto Peças"
       aria-roledescription="carrossel"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocusCapture={() => setIsFocusWithin(true)}
       onBlurCapture={handleBlur}
     >
       <div className="promo-carousel-inner container">
@@ -149,11 +164,11 @@ function PromoCarousel() {
           <button
             type="button"
             className="promo-pause"
-            onClick={() => setIsPaused((paused) => !paused)}
-            aria-label={isPaused ? "Retomar rotação do carrossel" : "Pausar rotação do carrossel"}
-            title={isPaused ? "Retomar rotação" : "Pausar rotação"}
+            onClick={() => setUserPaused((paused) => !paused)}
+            aria-label={userPaused ? "Retomar rotação do carrossel" : "Pausar rotação do carrossel"}
+            title={userPaused ? "Retomar rotação" : "Pausar rotação"}
           >
-            {isPaused ? <Play size={14} /> : <Pause size={14} />}
+            {userPaused ? <Play size={14} /> : <Pause size={14} />}
           </button>
         </div>
       </div>
