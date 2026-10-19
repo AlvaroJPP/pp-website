@@ -87,6 +87,17 @@ export default function Catalogo() {
           <div className="catalog-note">
             <strong>Importante:</strong> este catálogo apresenta categorias e exemplos de itens, não um estoque em tempo real. Antes de se deslocar, confirme com a loja se a peça está disponível e se serve no seu veículo.
           </div>
+
+          <div className="catalog-help-panel">
+            <div className="catalog-help-icon"><Search size={22} /></div>
+            <div className="catalog-help-copy">
+              <strong>Não sabe exatamente o nome da peça?</strong>
+              <p>Você pode começar pelo sistema do veículo — freios, motor, elétrica ou suspensão — e usar o nosso guia para reunir os dados corretos antes de consultar.</p>
+            </div>
+            <a className="button button-primary" href="#/dicas">
+              Abrir guia automotivo <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
     </>
