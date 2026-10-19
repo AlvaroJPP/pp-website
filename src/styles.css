@@ -1776,3 +1776,27 @@ img { color: #748093; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
+
+
+/* Precisely center the WhatsApp brand mark inside its floating button */
+.whatsapp-float {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 0;
+}
+.whatsapp-float-icon {
+  display: block;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+  margin: 0;
+  object-fit: contain;
+}
+@media (max-width: 640px) {
+  .whatsapp-float-icon {
+    width: 33px;
+    height: 33px;
+    flex-basis: 33px;
+  }
+}
