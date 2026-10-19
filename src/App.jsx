@@ -140,56 +140,50 @@ function App() {
 
       <main>
         <section className="hero" id="inicio">
-          <div className="container hero-grid">
-            <div className="hero-content">
-              <Eyebrow>Sua parceira automotiva</Eyebrow>
-              <h1>
-                A peça certa para você <em>seguir em frente.</em>
-              </h1>
-              <p className="hero-copy">
-                Encontre peças e acessórios automotivos para cuidar do seu
-                veículo. Conte com a PP Auto Peças em Vila dos Cabanos,
-                Barcarena.
-              </p>
-              <div className="hero-actions">
-                <a className="button button-primary" href="#categorias">
-                  Conheça nossas categorias <ArrowRight size={17} />
-                </a>
-                <a className="button button-outline" href="#localizacao">
-                  Visite nossa loja
-                </a>
-              </div>
-              <div className="trust-line">
-                <span className="trust-icon"><Check size={18} /></span>
-                <span>
-                  Atendimento próximo e orientação para encontrar a peça ideal.
-                </span>
-              </div>
-            </div>
-
-            <div className="hero-visual">
-              <div className="hero-photo">
-                <img
-                  src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=85"
-                  alt="Peças e componentes automotivos em uma oficina"
-                  fetchPriority="high"
-                />
-                <div className="photo-shade" />
-                <div className="photo-caption">
-                  <strong>PP Auto Peças</strong>
-                  <span>Seu veículo merece cuidado em cada detalhe.</span>
+          <div className="hero-banner">
+            <img
+              className="hero-banner-image"
+              src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2200&q=90"
+              alt="Peças e componentes automotivos em uma oficina"
+              fetchPriority="high"
+            />
+            <div className="photo-shade" />
+            <div className="container hero-banner-inner">
+              <div className="hero-content">
+                <Eyebrow>Sua parceira automotiva</Eyebrow>
+                <h1>
+                  A peça certa para você <em>seguir em frente.</em>
+                </h1>
+                <p className="hero-copy">
+                  Encontre peças e acessórios automotivos para cuidar do seu
+                  veículo. Conte com a PP Auto Peças em Vila dos Cabanos,
+                  Barcarena.
+                </p>
+                <div className="hero-actions">
+                  <a className="button button-primary" href="#categorias">
+                    Conheça nossas categorias <ArrowRight size={17} />
+                  </a>
+                  <a className="button button-outline" href="#localizacao">
+                    Visite nossa loja
+                  </a>
+                </div>
+                <div className="trust-line">
+                  <span className="trust-icon"><Check size={18} /></span>
+                  <span>
+                    Atendimento próximo e orientação para encontrar a peça ideal.
+                  </span>
                 </div>
               </div>
-              <div className="floating-card">
-                <span className="floating-icon"><ShieldCheck size={23} /></span>
-                <span>
-                  <b>Confiança em cada escolha</b>
-                  <small>Atendimento na sua região</small>
-                </span>
-              </div>
+            </div>
+            <div className="floating-card">
+              <span className="floating-icon"><ShieldCheck size={23} /></span>
+              <span>
+                <b>Confiança em cada escolha</b>
+                <small>Atendimento na sua região</small>
+              </span>
             </div>
           </div>
-        </section>
+        </section>section>
 
         <section className="benefits-strip" aria-label="Diferenciais">
           <div className="container benefit-grid">
