@@ -1,6 +1,6 @@
-# PP Auto Peças — React + Vite
+# SP Auto Peças — React + Vite
 
-Landing page responsiva da **PP Auto Peças**, em Vila dos Cabanos, Barcarena — PA, feita com React e Vite.
+Landing page responsiva da **SP Auto Peças**, em Vila dos Cabanos, Barcarena — PA, feita com React e Vite.
 
 ## Tecnologias
 
@@ -31,7 +31,7 @@ O workflow em `.github/workflows/pages.yml` instala as dependências, executa o 
 
 1. No GitHub, abra **Settings → Pages**.
 2. Em **Build and deployment**, selecione **GitHub Actions** como fonte.
-3. Abra a aba **Actions** e verifique o resultado de **Deploy PP Auto Peças website**.
+3. Abra a aba **Actions** e verifique o resultado de **Deploy SP Auto Peças website**.
 
 Endereço esperado após uma publicação bem-sucedida:
 https://alvarojpp.github.io/pp-website/
