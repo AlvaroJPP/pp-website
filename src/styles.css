@@ -933,3 +933,244 @@ h1, h2, h3 { color: var(--ink); }
   .footer-top { padding-bottom: 24px; }
   .footer-bottom { line-height: 1.8; }
 }
+
+
+/* Guided part consultation */
+.product-consult-button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.product-consult-button:hover { color: #a71920; }
+.product-consult-button:focus-visible {
+  outline: 3px solid rgba(217, 39, 46, .28);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.consultation-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 24px;
+  background: rgba(8, 15, 25, .72);
+  backdrop-filter: blur(5px);
+}
+.consultation-panel {
+  width: min(100%, 760px);
+  max-height: min(900px, calc(100vh - 48px));
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 17px;
+  background: #fff;
+  color: #172334;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .32);
+  animation: consultation-enter .18s ease-out;
+}
+@keyframes consultation-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.consultation-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px 26px;
+  background: #101a28;
+  color: #fff;
+}
+.consultation-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+.consultation-heading-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  color: #ff888b;
+}
+.consultation-eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  color: #ff999c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+.consultation-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(19px, 3vw, 25px);
+  letter-spacing: -.7px;
+  line-height: 1.18;
+}
+.consultation-close {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 9px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+}
+.consultation-close:hover { background: rgba(255,255,255,.16); }
+.consultation-body { padding: 25px 26px 28px; }
+.consultation-selected-product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+  border: 1px solid #e7eaf0;
+  border-radius: 10px;
+  background: #f8f9fb;
+}
+.consultation-product-icon {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 9px;
+  background: #fbeaec;
+  color: #c7242b;
+}
+.consultation-selected-product div { display: grid; gap: 3px; min-width: 0; }
+.consultation-selected-product span:not(.consultation-product-icon) {
+  color: #798393;
+  font-size: 10px;
+}
+.consultation-selected-product strong { font-size: 14px; }
+.consultation-selected-product small { color: #667181; font-size: 11px; }
+.consultation-intro {
+  margin: 18px 0;
+  color: #627083;
+  font-size: 13px;
+  line-height: 1.75;
+}
+.consultation-form { display: grid; gap: 16px; }
+.consultation-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.consultation-form label,
+.consultation-message-preview label {
+  display: grid;
+  gap: 7px;
+  color: #354153;
+  font-size: 12px;
+  font-weight: 700;
+}
+.consultation-form label > span { color: #d9272e; }
+.consultation-form input,
+.consultation-form textarea,
+.consultation-message-preview textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #dce1e8;
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: #fff;
+  color: #172334;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.consultation-form input { min-height: 43px; }
+.consultation-form textarea,
+.consultation-message-preview textarea { resize: vertical; }
+.consultation-form input::placeholder,
+.consultation-form textarea::placeholder { color: #9aa3af; font-weight: 400; }
+.consultation-form input:focus,
+.consultation-form textarea:focus,
+.consultation-message-preview textarea:focus {
+  border-color: #d9272e;
+  box-shadow: 0 0 0 3px rgba(217, 39, 46, .10);
+}
+.consultation-notes { margin-top: 1px; }
+.consultation-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+.consultation-actions .button { min-height: 45px; }
+.consultation-privacy-note {
+  margin: -4px 0 0;
+  color: #7d8795;
+  font-size: 10px;
+  line-height: 1.65;
+}
+.consultation-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 19px;
+  padding: 12px 13px;
+  border: 1px solid #dce4eb;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.consultation-status svg { flex: 0 0 auto; margin-top: 1px; }
+.consultation-status-success {
+  border-color: #cce8d9;
+  background: #f0faf4;
+  color: #236544;
+}
+.consultation-status-info {
+  border-color: #d9e4f2;
+  background: #f4f8fd;
+  color: #375574;
+}
+.consultation-message-preview {
+  display: grid;
+  gap: 10px;
+  margin-top: 17px;
+}
+.consultation-message-preview textarea {
+  min-height: 185px;
+  background: #f8f9fb;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 400;
+}
+.consultation-message-preview .button { justify-self: start; min-height: 40px; }
+
+@media (max-width: 640px) {
+  .consultation-backdrop { align-items: end; padding: 0; }
+  .consultation-panel {
+    width: 100%;
+    max-height: 94vh;
+    border-radius: 17px 17px 0 0;
+    animation: consultation-enter .18s ease-out;
+  }
+  .consultation-header { padding: 19px 17px; }
+  .consultation-heading { gap: 10px; }
+  .consultation-heading-icon { width: 39px; height: 39px; }
+  .consultation-header h2 { font-size: 19px; }
+  .consultation-close { width: 35px; height: 35px; }
+  .consultation-body { padding: 18px 17px 24px; }
+  .consultation-form-grid { grid-template-columns: 1fr; gap: 12px; }
+  .consultation-actions { display: grid; grid-template-columns: 1fr; }
+  .consultation-actions .button { width: 100%; }
+  .consultation-message-preview .button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .consultation-panel { animation: none; }
+}
