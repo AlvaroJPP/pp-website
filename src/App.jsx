@@ -17,10 +17,13 @@ import {
 
 const address =
   "Rua Germano Aranha, 33, Quadra 275, Lote 33, Núcleo Urbano, Vila dos Cabanos, Barcarena, PA, CEP 68447-000";
+const coordinates = "-1.5154009,-48.6963353";
 const mapsUrl =
-  "https://www.google.com/maps/search/?api=1&query=Rua+Germano+Aranha%2C+33%2C+Vila+dos+Cabanos%2C+Barcarena%2C+PA";
+  "https://www.google.com/maps/dir/?api=1&destination=-1.5154009%2C-48.6963353";
+const streetViewUrl =
+  "https://www.google.com/maps/@-1.5154009,-48.6963353,15a,85.6y,15.83h,86.5t/data=!3m7!1e1!3m5!1s8BIeCfsTWi-p7iC_QTWLOg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D3.5040191162713654%26panoid%3D8BIeCfsTWi-p7iC_QTWLOg%26yaw%3D15.827130740274386!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D";
 const mapEmbedUrl =
-  "https://maps.google.com/maps?q=Rua%20Germano%20Aranha%2C%2033%2C%20Vila%20dos%20Cabanos%2C%20Barcarena%2C%20PA&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  "https://maps.google.com/maps?q=-1.5154009%2C-48.6963353&z=17&output=embed";
 
 const categories = [
   {
@@ -316,13 +319,18 @@ function App() {
                   <p>Consulte os horários de funcionamento diretamente com a loja.</p>
                 </div>
               </div>
-              <a className="button button-primary map-button" href={mapsUrl} target="_blank" rel="noreferrer">
-                Abrir rota no Google Maps <ArrowUpRight size={16} />
-              </a>
+              <div className="location-actions">
+                <a className="button button-primary map-button" href={mapsUrl} target="_blank" rel="noreferrer">
+                  Abrir rota no Google Maps <ArrowUpRight size={16} />
+                </a>
+                <a className="button button-outline map-button" href={streetViewUrl} target="_blank" rel="noreferrer">
+                  Ver no Street View <ArrowUpRight size={16} />
+                </a>
+              </div>
             </div>
             <div className="map-frame">
               <iframe
-                title={`Mapa da localização da SP Auto Peças: ${address}`}
+                title={`Mapa da localização da SP Auto Peças nas coordenadas ${coordinates}`}
                 src={mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
