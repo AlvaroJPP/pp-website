@@ -38,6 +38,132 @@ export function PageIntro({ eyebrow, title, description }) {
   );
 }
 
+const promoSlides = [
+  {
+    eyebrow: "Ofertas e condições especiais",
+    title: "Cuide bem do seu veículo.",
+    description: "Consulte na loja as condições disponíveis para peças e acessórios automotivos.",
+    cta: "Explorar catálogo",
+    href: "#/catalogo",
+    icon: Tag,
+    theme: "promo-slide-wine",
+  },
+  {
+    eyebrow: "Preparando a próxima revisão?",
+    title: "Encontre as peças para sua manutenção.",
+    description: "Explore filtros, freios, suspensão e outros itens de referência para seu veículo.",
+    cta: "Ver peças",
+    href: "#/catalogo",
+    icon: Wrench,
+    theme: "promo-slide-sage",
+  },
+  {
+    eyebrow: "Escolha com mais segurança",
+    title: "Confirme a aplicação antes de comprar.",
+    description: "Tenha a marca, o modelo e o ano do veículo em mãos para consultar compatibilidade e disponibilidade.",
+    cta: "Ver dicas automotivas",
+    href: "#/dicas",
+    icon: ShieldCheck,
+    theme: "promo-slide-cream",
+  },
+];
+
+function PromoCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const activeSlide = promoSlides[activeIndex];
+  const ActiveIcon = activeSlide.icon;
+
+  useEffect(() => {
+    if (isPaused || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % promoSlides.length);
+    }, 6500);
+
+    return () => window.clearInterval(intervalId);
+  }, [isPaused]);
+
+  const showPrevious = () => {
+    setActiveIndex((current) => (current - 1 + promoSlides.length) % promoSlides.length);
+  };
+
+  const showNext = () => {
+    setActiveIndex((current) => (current + 1) % promoSlides.length);
+  };
+
+  const handleBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setIsPaused(false);
+    }
+  };
+
+  return (
+    <section
+      className={`promo-carousel ${activeSlide.theme}`}
+      aria-label="Ofertas e destaques da SP Auto Peças"
+      aria-roledescription="carrossel"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={handleBlur}
+    >
+      <div className="promo-carousel-inner container">
+        <div className="promo-carousel-content" key={activeIndex}>
+          <div className="promo-icon-wrap" aria-hidden="true">
+            <ActiveIcon size={25} strokeWidth={1.8} />
+          </div>
+          <div className="promo-copy">
+            <span className="promo-eyebrow">{activeSlide.eyebrow}</span>
+            <h2>{activeSlide.title}</h2>
+            <p>{activeSlide.description}</p>
+            <a className="promo-cta" href={activeSlide.href}>
+              {activeSlide.cta} <ArrowUpRight size={16} />
+            </a>
+          </div>
+        </div>
+
+        <div className="promo-carousel-controls" aria-label="Controles do carrossel">
+          <div className="promo-carousel-arrows">
+            <button type="button" onClick={showPrevious} aria-label="Promoção anterior">
+              <ChevronLeft size={18} />
+            </button>
+            <button type="button" onClick={showNext} aria-label="Próxima promoção">
+              <ChevronRight size={18} />
+            </button>
+          </div>
+          <div className="promo-carousel-dots" aria-label="Selecionar destaque">
+            {promoSlides.map((slide, index) => (
+              <button
+                key={slide.eyebrow}
+                type="button"
+                className={index === activeIndex ? "promo-dot promo-dot-active" : "promo-dot"}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Mostrar destaque ${index + 1} de ${promoSlides.length}`}
+                aria-pressed={index === activeIndex}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            className="promo-pause"
+            onClick={() => setIsPaused((paused) => !paused)}
+            aria-label={isPaused ? "Retomar rotação do carrossel" : "Pausar rotação do carrossel"}
+            title={isPaused ? "Retomar rotação" : "Pausar rotação"}
+          >
+            {isPaused ? <Play size={14} /> : <Pause size={14} />}
+          </button>
+        </div>
+      </div>
+      <div className="promo-progress" aria-hidden="true">
+        <span key={activeIndex} className={isPaused ? "promo-progress-bar promo-progress-paused" : "promo-progress-bar"} />
+      </div>
+    </section>
+  );
+}
+
 function WhatsAppFloatingButton() {
   return (
     <a
@@ -122,6 +248,8 @@ export default function SiteLayout({ children, currentRoute }) {
           </nav>
         </div>
       </header>
+
+      <PromoCarousel />
 
       <main>{children}</main>
 
