@@ -1174,3 +1174,75 @@ h1, h2, h3 { color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .consultation-panel { animation: none; }
 }
+
+
+/* Floating WhatsApp contact */
+.whatsapp-float {
+  position: fixed;
+  z-index: 80;
+  right: max(22px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  display: inline-flex;
+  width: 62px;
+  height: 62px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, .95);
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(12, 36, 24, .24), 0 2px 7px rgba(12, 36, 24, .12);
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  background: #1fbd5a;
+  box-shadow: 0 14px 30px rgba(12, 36, 24, .3);
+}
+.whatsapp-float:focus-visible {
+  outline: 3px solid #101a28;
+  outline-offset: 4px;
+}
+.whatsapp-float-icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+}
+.whatsapp-float-label {
+  position: absolute;
+  right: 73px;
+  top: 50%;
+  width: max-content;
+  max-width: min(260px, calc(100vw - 120px));
+  padding: 10px 13px;
+  border: 1px solid #e2e7ec;
+  border-radius: 8px;
+  background: #fff;
+  color: #172334;
+  box-shadow: 0 5px 20px rgba(16, 26, 40, .14);
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(5px, -50%);
+  transition: opacity .16s ease, transform .16s ease;
+}
+.whatsapp-float:hover .whatsapp-float-label,
+.whatsapp-float:focus-visible .whatsapp-float-label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+@media (max-width: 640px) {
+  .whatsapp-float {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(18px, env(safe-area-inset-bottom));
+    width: 58px;
+    height: 58px;
+  }
+  .whatsapp-float-icon { width: 32px; height: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float,
+  .whatsapp-float-label { transition: none; }
+}
