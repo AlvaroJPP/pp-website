@@ -13,7 +13,8 @@ Site institucional multipágina da **SP Auto Peças**, em Vila dos Cabanos, Barc
 ## Páginas
 
 - **Início** — banner panorâmico, apresentação e categorias em destaque
-- **Catálogo** — categorias de peças e busca por termos
+- **Catálogo** — categorias de peças, busca por termos e orientação para pesquisar
+- **Dicas automotivas** — checklist para identificar peças, orientações por categoria e perguntas frequentes
 - **Sobre a loja** — informações e orientações para identificar a peça correta
 - **Contato e localização** — endereço informado, mapa, rota e Street View
 
@@ -51,6 +52,7 @@ https://alvarojpp.github.io/pp-website/
 - `src/components/SiteLayout.jsx` — navegação, logotipo e rodapé
 - `src/pages/Home.jsx` — página inicial
 - `src/pages/Catalogo.jsx` — categorias e filtro de busca
+- `src/pages/Dicas.jsx` — guia automotivo e perguntas frequentes
 - `src/pages/Sobre.jsx` — apresentação da loja
 - `src/pages/Localizacao.jsx` — mapa e localização
 - `src/data/site.js` — dados das categorias, endereço e links do mapa
