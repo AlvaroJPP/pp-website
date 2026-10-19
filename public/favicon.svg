@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">SP Auto Peças</title>
+  <rect width="64" height="64" rx="13" fill="#d9272e"/>
+  <path d="M13 15h38" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" letter-spacing="-1.5" fill="#fff">SP</text>
+  <path d="M17 50h30" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+</svg>
