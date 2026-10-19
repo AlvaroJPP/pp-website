@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Catalogo from "./pages/Catalogo.jsx";
 import Sobre from "./pages/Sobre.jsx";
 import Localizacao from "./pages/Localizacao.jsx";
+import Dicas from "./pages/Dicas.jsx";
 
 function getRoute() {
   const hash = window.location.hash;
@@ -46,6 +47,9 @@ export default function App() {
       break;
     case "/sobre":
       page = <Sobre />;
+      break;
+    case "/dicas":
+      page = <Dicas />;
       break;
     case "/localizacao":
       page = <Localizacao />;
