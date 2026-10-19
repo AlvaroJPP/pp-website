@@ -77,6 +77,37 @@ export default function Sobre() {
         </div>
       </section>
 
+      <section className="section about-compatibility-section">
+        <div className="container about-compatibility-grid">
+          <div>
+            <Eyebrow>Compatibilidade</Eyebrow>
+            <h2>Uma peça parecida nem sempre é a peça correta.</h2>
+            <p>
+              Veículos do mesmo modelo podem usar componentes diferentes
+              dependendo do ano, da versão e da motorização. Por isso, confirme
+              os dados antes de fechar a compra ou iniciar a instalação.
+            </p>
+            <a className="button button-primary" href="#/dicas">
+              Ver guia de identificação <ArrowRight size={16} />
+            </a>
+          </div>
+          <div className="faq-list">
+            <details className="faq-item">
+              <summary><span>E se eu não tiver o código da peça?</span><ArrowRight size={18} /></summary>
+              <p>Leve os dados do veículo e, se possível, uma foto nítida da peça antiga ou da etiqueta. A identificação ainda precisa ser confirmada.</p>
+            </details>
+            <details className="faq-item">
+              <summary><span>Por que o ano e a versão são importantes?</span><ArrowRight size={18} /></summary>
+              <p>Uma linha de veículos pode ter mudanças entre anos, motores, versões e sistemas de montagem. Esses dados ajudam a filtrar as opções corretas.</p>
+            </details>
+            <details className="faq-item">
+              <summary><span>Posso confirmar o estoque pelo site?</span><ArrowRight size={18} /></summary>
+              <p>Não neste momento. O site apresenta categorias de referência. Estoque, preço, marca e prazo devem ser confirmados diretamente com a loja.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section className="about-page-reminder">
         <div className="container about-reminder-inner">
           <span className="reminder-check"><Check size={19} /></span>
