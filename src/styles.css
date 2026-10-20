@@ -3806,3 +3806,128 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     padding-left: 0;
   }
 }
+
+
+/* Visual refresh: brighter showroom surfaces keep product photography in focus. */
+:root,
+:root[data-theme="light"],
+:root[data-theme="dark"],
+@media (prefers-color-scheme: dark) {
+  /* Keep the storefront light regardless of the device's dark-mode preference. */
+}
+:root {
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --ink: #171c26;
+  --muted: #687181;
+  --line: #e6e9ef;
+  --navy: #172033;
+}
+body {
+  background: #ffffff;
+  color: var(--ink);
+}
+main,
+.catalog-page-section {
+  background-color: #f8f9fb;
+}
+.catalog-page-section {
+  padding-bottom: 72px;
+}
+.catalog-page-section .catalog-product-search-panel,
+.catalog-page-section .catalog-help-panel,
+.catalog-page-section .catalog-note {
+  background: #ffffff;
+  border-color: #e6e9ef;
+}
+.catalog-page-section .product-grid {
+  align-items: stretch;
+}
+.catalog-page-section .product-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e8ee;
+  border-radius: 12px;
+  box-shadow: 0 3px 14px rgba(23, 32, 51, 0.045);
+}
+.catalog-page-section .product-card:hover {
+  border-color: #d6dbe4;
+  box-shadow: 0 10px 26px rgba(23, 32, 51, 0.09);
+}
+.catalog-page-section .product-card-image {
+  background: #f0f2f5;
+}
+.catalog-page-section .product-card-content {
+  background: #ffffff;
+}
+.catalog-page-section .product-card h2 {
+  color: #171c26;
+}
+.catalog-page-section .product-card-content > p,
+.catalog-page-section .product-availability {
+  color: #687181;
+}
+.catalog-page-section .product-reference-badge {
+  background: rgba(255, 255, 255, 0.96);
+  color: #343b48;
+  border: 1px solid rgba(220, 224, 232, 0.95);
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.08);
+}
+.catalog-page-section .catalog-category-filters .category-filter {
+  background: #ffffff;
+}
+.catalog-page-section .catalog-category-filters .category-filter[aria-pressed="true"],
+.catalog-page-section .catalog-category-filters .category-filter.active {
+  background: #fff0ef;
+  border-color: #f2c0bd;
+  color: #c92522;
+}
+.category-card,
+.featured-product-card,
+.product-card,
+.benefit,
+.vehicle-finder {
+  background: #ffffff;
+}
+.category-card,
+.featured-product-card,
+.product-card {
+  border-color: #e6e9ef;
+}
+.site-footer {
+  background: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: light;
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --ink: #171c26;
+    --muted: #687181;
+    --line: #e6e9ef;
+    --navy: #172033;
+  }
+  .category-card,
+  .featured-product-card,
+  .product-card,
+  .benefit,
+  .vehicle-finder {
+    background: #ffffff;
+  }
+  .catalog-page-section,
+  .catalog-page-section .product-card-content {
+    background: #f8f9fb;
+  }
+  .catalog-page-section .product-card-content {
+    background: #ffffff;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --ink: #171c26;
+  --muted: #687181;
+  --line: #e6e9ef;
+  --navy: #172033;
+}
