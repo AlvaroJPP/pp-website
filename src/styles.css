@@ -3809,12 +3809,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 
 /* Visual refresh: brighter showroom surfaces keep product photography in focus. */
-:root,
-:root[data-theme="light"],
-:root[data-theme="dark"],
-@media (prefers-color-scheme: dark) {
-  /* Keep the storefront light regardless of the device's dark-mode preference. */
-}
+/* Keep the storefront light regardless of the device's dark-mode preference. */
 :root {
   color-scheme: light;
   --bg: #f7f8fa;
