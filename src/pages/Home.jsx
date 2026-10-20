@@ -154,6 +154,21 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="vehicle-brands-section" aria-labelledby="vehicle-brands-title">
+        <div className="container">
+          <div className="vehicle-brands-heading">
+            <span className="eyebrow">Marcas atendidas</span>
+            <h2 id="vehicle-brands-title">Peças para diversas marcas de veículos</h2>
+            <p>Consulte a equipe para confirmar a aplicação e a disponibilidade da peça para seu carro.</p>
+          </div>
+          <div className="vehicle-brands-list" aria-label="Marcas de veículos">
+            {["Citroën", "Toyota", "Chevrolet", "Fiat", "Hyundai", "Honda", "Nissan", "Peugeot", "Kia", "Renault", "Ford"].map((brand) => (
+              <span className="vehicle-brand-name" key={brand}>{brand}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="benefits-strip" aria-label="Diferenciais">
         <div className="container benefit-grid">
           {benefits.map((benefit) => {
