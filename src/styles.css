@@ -4024,3 +4024,36 @@ main,
   .vehicle-brands-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .vehicle-brand-name { min-width: 0; min-height: 43px; padding: 9px; font-size: 14px; }
 }
+
+
+/* Display actual automotive brand logos rather than their names. */
+.vehicle-brand-name {
+  min-width: 0;
+  width: 145px;
+  min-height: 72px;
+  padding: 13px 17px;
+}
+.vehicle-brand-name img {
+  display: block;
+  width: 100%;
+  max-width: 112px;
+  height: 42px;
+  object-fit: contain;
+}
+.vehicle-brand-name[data-fallback]::after {
+  content: attr(data-fallback);
+  color: #171c26;
+  font-size: 13px;
+  font-weight: 700;
+}
+@media (max-width: 480px) {
+  .vehicle-brand-name {
+    width: auto;
+    min-height: 58px;
+    padding: 10px;
+  }
+  .vehicle-brand-name img {
+    max-width: 100px;
+    height: 36px;
+  }
+}
