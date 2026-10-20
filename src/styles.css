@@ -3926,3 +3926,31 @@ main,
   --line: #e6e9ef;
   --navy: #172033;
 }
+
+
+/* Footer: black text for clear readability on the light background. */
+.site-footer {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-top: 1px solid #e6e9ef;
+}
+.site-footer .brand,
+.site-footer .brand-wording small,
+.site-footer a,
+.site-footer p,
+.site-footer span,
+.site-footer strong,
+.site-footer small,
+.site-footer .footer-note,
+.site-footer .footer-bottom {
+  color: #111111 !important;
+}
+.site-footer .footer-top {
+  border-bottom-color: #e6e9ef;
+}
+.site-footer .footer-bottom {
+  border-top-color: #e6e9ef;
+}
+.site-footer a:hover {
+  color: #c92522 !important;
+}
