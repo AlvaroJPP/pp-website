@@ -163,17 +163,17 @@ export default function Home() {
           </div>
           <div className="vehicle-brands-list" aria-label="Marcas de veículos">
             {[
-              { name: "Citroën", logo: "https://cdn.simpleicons.org/citroen/DA291C" },
-              { name: "Toyota", logo: "https://cdn.simpleicons.org/toyota/EB0A1E" },
-              { name: "Chevrolet", logo: "https://cdn.simpleicons.org/chevrolet/CC0000" },
-              { name: "Fiat", logo: "https://cdn.simpleicons.org/fiat/941B80" },
-              { name: "Hyundai", logo: "https://cdn.simpleicons.org/hyundai/002C5F" },
-              { name: "Honda", logo: "https://cdn.simpleicons.org/honda/E40521" },
-              { name: "Nissan", logo: "https://cdn.simpleicons.org/nissan/C3002F" },
-              { name: "Peugeot", logo: "https://cdn.simpleicons.org/peugeot/000000" },
-              { name: "Kia", logo: "https://cdn.simpleicons.org/kia/05141F" },
-              { name: "Renault", logo: "https://cdn.simpleicons.org/renault/FFCC33" },
-              { name: "Ford", logo: "https://cdn.simpleicons.org/ford/003478" },
+              { name: "Citroën", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Citroen_2022.svg" },
+              { name: "Toyota", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_carlogo.svg" },
+              { name: "Chevrolet", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Chevrolet_simple_logo.svg" },
+              { name: "Fiat", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/FIAT_logo_(2020).svg" },
+              { name: "Hyundai", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Hyundai_Motor_Company_logo.svg" },
+              { name: "Honda", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Honda_Logo.svg" },
+              { name: "Nissan", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Nissan_2020_logo.svg" },
+              { name: "Peugeot", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Wordmark_Peugeot_2021.svg" },
+              { name: "Kia", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/KIA_logo3.svg" },
+              { name: "Renault", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_logo.svg" },
+              { name: "Ford", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ford_logo_flat.svg" },
             ].map((brand) => (
               <span className="vehicle-brand-name" key={brand.name} title={brand.name}>
                 <img
