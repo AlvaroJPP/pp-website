@@ -333,6 +333,20 @@ export default function Catalogo() {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  useEffect(() => {
+    const syncHeaderSearch = () => {
+      const hash = window.location.hash;
+      const queryIndex = hash.indexOf("?");
+      const query = queryIndex >= 0 ? hash.slice(queryIndex + 1) : "";
+      const value = new URLSearchParams(query).get("q") ?? "";
+      setSearch(value);
+      if (value) setSelectedCategory("Todas");
+    };
+    syncHeaderSearch();
+    window.addEventListener("hashchange", syncHeaderSearch);
+    return () => window.removeEventListener("hashchange", syncHeaderSearch);
+  }, []);
+
   const closeConsultation = useCallback(() => setSelectedProduct(null), []);
   const openConsultation = (product) => setSelectedProduct(product);
 
