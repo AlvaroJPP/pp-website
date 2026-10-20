@@ -264,6 +264,11 @@ export const benefits = [
     title: "Atendimento local",
     subtitle: "Em Vila dos Cabanos",
   },
+  {
+    icon: "shield",
+    title: "Compatibilidade",
+    subtitle: "Confirme antes de comprar",
+  },
 ];
 
 // Telefone público listado para a empresa no endereço informado.
