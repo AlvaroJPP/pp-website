@@ -163,21 +163,21 @@ export default function Home() {
           </div>
           <div className="vehicle-brands-list" aria-label="Marcas de veículos">
             {[
-              { name: "Citroën", logo: "citroen" },
-              { name: "Toyota", logo: "toyota" },
-              { name: "Chevrolet", logo: "chevrolet" },
-              { name: "Fiat", logo: "fiat" },
-              { name: "Hyundai", logo: "hyundai" },
-              { name: "Honda", logo: "honda" },
-              { name: "Nissan", logo: "nissan" },
-              { name: "Peugeot", logo: "peugeot" },
-              { name: "Kia", logo: "kia" },
-              { name: "Renault", logo: "renault" },
-              { name: "Ford", logo: "ford" },
-            ].map((brand) => (
+              { name: "Citroën", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Citroen_2022.svg" },
+              { name: "Toyota", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_carlogo.svg" },
+              { name: "Chevrolet", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Chevrolet_simple_logo.svg" },
+              { name: "Fiat", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/FIAT_logo_(2020).svg" },
+              { name: "Hyundai", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Hyundai_Motor_Company_logo.svg" },
+              { name: "Honda", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Honda_Logo.svg" },
+              { name: "Nissan", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Nissan_2020_logo.svg" },
+              { name: "Peugeot", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Peugeot_2021_Logo.svg" },
+              { name: "Kia", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/KIA_logo3.svg" },
+              { name: "Renault", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_2021_logo.svg" },
+              { name: "Ford", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ford_logo_flat.svg" },
+            ].map((brand) => (            ].map((brand) => (
               <span className="vehicle-brand-name" key={brand.name} title={brand.name}>
                 <img
-                  src={`https://cdn.simpleicons.org/${brand.logo}`}
+                  src={brand.logo}
                   alt={`Logo da ${brand.name}`}
                   loading="lazy"
                   onError={(event) => {
