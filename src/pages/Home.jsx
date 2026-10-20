@@ -17,6 +17,7 @@ const benefitIcons = {
   package: PackageCheck,
   wrench: Wrench,
   map: MapPin,
+  shield: ShieldCheck,
 };
 
 function FeaturedProductCard({ product }) {
