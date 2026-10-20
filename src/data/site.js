@@ -17,8 +17,8 @@ export const categories = [
     title: "Peças automotivas",
     description: "Componentes para manutenção e reposição de diferentes veículos.",
     examples: "Peças de reposição, correias, componentes e itens de manutenção.",
-    image: "https://cdn.pixabay.com/photo/2017/09/30/03/40/spark-plug-2801172_1280.jpg",
-    alt: "Vela de ignição automotiva sobre fundo branco; imagem ilustrativa do Pixabay.",
+    image: "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=900&q=80",
+    alt: "Foto ilustrativa de componentes automotivos.",
     keywords: "peças automotivas reposição correias manutenção",
   },
   {
@@ -101,8 +101,8 @@ export const products = [
     category: "Motor e filtros",
     description: "Confira tipo, medidas e especificação recomendada para o motor.",
     keywords: "vela ignição velas centelha motor",
-    image: "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=900&q=80",
-    alt: "Foto ilustrativa de componentes automotivos.",
+    image: "https://cdn.pixabay.com/photo/2017/09/30/03/40/spark-plug-2801172_1280.jpg",
+    alt: "Vela de ignição automotiva sobre fundo branco; imagem ilustrativa do Pixabay.",
   },
   {
     name: "Correia de acessórios",
