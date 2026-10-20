@@ -3954,3 +3954,9 @@ main,
 .site-footer a:hover {
   color: #c92522 !important;
 }
+
+
+/* Remove the red accent from the vehicle finder section. */
+.vehicle-finder {
+  border-left: 0 !important;
+}
