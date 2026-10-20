@@ -162,8 +162,30 @@ export default function Home() {
             <p>Consulte a equipe para confirmar a aplicação e a disponibilidade da peça para seu carro.</p>
           </div>
           <div className="vehicle-brands-list" aria-label="Marcas de veículos">
-            {["Citroën", "Toyota", "Chevrolet", "Fiat", "Hyundai", "Honda", "Nissan", "Peugeot", "Kia", "Renault", "Ford"].map((brand) => (
-              <span className="vehicle-brand-name" key={brand}>{brand}</span>
+            {[
+              { name: "Citroën", logo: "citroen" },
+              { name: "Toyota", logo: "toyota" },
+              { name: "Chevrolet", logo: "chevrolet" },
+              { name: "Fiat", logo: "fiat" },
+              { name: "Hyundai", logo: "hyundai" },
+              { name: "Honda", logo: "honda" },
+              { name: "Nissan", logo: "nissan" },
+              { name: "Peugeot", logo: "peugeot" },
+              { name: "Kia", logo: "kia" },
+              { name: "Renault", logo: "renault" },
+              { name: "Ford", logo: "ford" },
+            ].map((brand) => (
+              <span className="vehicle-brand-name" key={brand.name} title={brand.name}>
+                <img
+                  src={`https://cdn.simpleicons.org/${brand.logo}`}
+                  alt={`Logo da ${brand.name}`}
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.style.display = "none";
+                    event.currentTarget.parentElement.dataset.fallback = brand.name;
+                  }}
+                />
+              </span>
             ))}
           </div>
         </div>
