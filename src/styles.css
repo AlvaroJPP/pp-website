@@ -2760,7 +2760,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .nav-wrap {
   display: grid;
-  grid-template-columns: auto minmax(230px, 1fr) auto auto;
+  grid-template-columns: auto minmax(230px, 1fr) auto;
   align-items: center;
   justify-content: initial;
   gap: 18px;
@@ -3235,7 +3235,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .benefit strong { margin-bottom: 2px; font-size: 14px; line-height: 1.25; }
 .benefit small { color: var(--muted); font-size: 12px; line-height: 1.35; }
-.section { padding: 44px 0 0; }
+.section { padding: 44px 0 0; background-color: var(--bg); }
 .categories-section, .featured-products-section, .how-to-section { background: transparent; }
 .section-heading {
   align-items: end;
