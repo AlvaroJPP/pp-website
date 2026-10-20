@@ -3960,3 +3960,9 @@ main,
 .vehicle-finder {
   border-left: 0 !important;
 }
+
+
+/* Remove the red accent from the home location container too. */
+.home-location-inner {
+  border-left: 0 !important;
+}
