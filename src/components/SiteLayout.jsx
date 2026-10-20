@@ -3,10 +3,12 @@ import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
+  ClipboardList,
   MapPin,
   Menu,
   Pause,
   Play,
+  Search,
   ShieldCheck,
   Tag,
   Wrench,
@@ -25,7 +27,16 @@ const navigation = [
 export function Brand() {
   return (
     <a className="brand" href="#/" aria-label="SP Auto Peças — início">
-      <span className="brand-mark">SP</span>
+      <span className="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <path d="M20 23.7A54 54 0 0 0 20 96.3" fill="none" stroke="#2d4a8f" strokeWidth="6" strokeLinecap="round" />
+          <path d="M100 23.7A54 54 0 0 1 100 96.3" fill="none" stroke="#b3122f" strokeWidth="6" strokeLinecap="round" />
+          <circle cx="60" cy="60" r="45" fill="#b3122f" />
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#fff" strokeOpacity=".35" strokeWidth="1.5" />
+          <text x="60" y="68" textAnchor="middle" fontFamily="Barlow Condensed, Arial Narrow, Impact, sans-serif" fontWeight="800" fontSize="50" fill="#fff">SP</text>
+          <text x="60" y="88" textAnchor="middle" fontFamily="Barlow Condensed, Arial Narrow, Impact, sans-serif" fontWeight="700" fontSize="19" letterSpacing="2.5" fill="#fff">PEÇAS</text>
+        </svg>
+      </span>
       <span className="brand-wording">
         SP AUTO PEÇAS
         <small>PEÇAS E ACESSÓRIOS</small>
@@ -225,6 +236,33 @@ export default function SiteLayout({ children, currentRoute }) {
       <header className="site-header">
         <div className="container nav-wrap">
           <Brand />
+          <form
+            className="header-search"
+            role="search"
+            onSubmit={(event) => {
+              event.preventDefault();
+              const form = event.currentTarget;
+              const term = new FormData(form).get("site-search")?.toString().trim() ?? "";
+              window.location.hash = term
+                ? `#/catalogo?q=${encodeURIComponent(term)}`
+                : "#/catalogo";
+              closeMenu();
+            }}
+          >
+            <label className="visually-hidden" htmlFor="site-search">Buscar peça no catálogo</label>
+            <input
+              id="site-search"
+              name="site-search"
+              type="search"
+              placeholder="Busque por peça, marca ou veículo"
+              autoComplete="off"
+            />
+            <button type="submit"><Search size={17} /> Buscar</button>
+          </form>
+          <a className="header-quote" href="#/catalogo" onClick={closeMenu}>
+            <ClipboardList size={18} />
+            <span>Solicitar orçamento</span>
+          </a>
           <button
             type="button"
             className="menu-toggle"
@@ -235,11 +273,13 @@ export default function SiteLayout({ children, currentRoute }) {
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <nav
-            id="primary-navigation"
-            className={`nav-links ${menuOpen ? "nav-links-open" : ""}`}
-            aria-label="Navegação principal"
-          >
+        </div>
+        <nav
+          id="primary-navigation"
+          className={`nav-links ${menuOpen ? "nav-links-open" : ""}`}
+          aria-label="Navegação principal"
+        >
+          <div className="nav-links-inner">
             {navigation.map((item) => (
               <a
                 key={item.href}
@@ -252,7 +292,7 @@ export default function SiteLayout({ children, currentRoute }) {
               </a>
             ))}
             <a
-              className="button button-primary nav-cta"
+              className="nav-direction"
               href={mapsUrl}
               target="_blank"
               rel="noreferrer"
@@ -260,8 +300,8 @@ export default function SiteLayout({ children, currentRoute }) {
             >
               Como chegar <ArrowUpRight size={16} />
             </a>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </header>
 
       <PromoCarousel />
