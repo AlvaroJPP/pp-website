@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   Wrench,
 } from "lucide-react";
-import { benefits, categories, mapsUrl } from "../data/site.js";
+import { benefits, categories, mapsUrl, products, whatsappNumber } from "../data/site.js";
 import { Eyebrow } from "../components/SiteLayout.jsx";
 
 const benefitIcons = {
@@ -18,6 +18,33 @@ const benefitIcons = {
   wrench: Wrench,
   map: MapPin,
 };
+
+function FeaturedProductCard({ product }) {
+  return (
+    <article className="featured-product-card">
+      <div className="featured-product-image">
+        <img
+          src={product.image}
+          alt={product.alt}
+          loading="lazy"
+          onError={(event) => {
+            event.currentTarget.src =
+              "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80";
+          }}
+        />
+        <span>Item de referência</span>
+      </div>
+      <div className="featured-product-content">
+        <small>{product.category}</small>
+        <h3>{product.name}</h3>
+        <p>Preço e disponibilidade sob consulta.</p>
+        <a href="#/catalogo" className="featured-product-link">
+          Consultar peça <ArrowUpRight size={15} />
+        </a>
+      </div>
+    </article>
+  );
+}
 
 function CategoryCard({ category }) {
   return (
@@ -48,48 +75,81 @@ export default function Home() {
   return (
     <>
       <section className="hero" id="inicio">
-        <div className="hero-banner">
-          <img
-            className="hero-banner-image"
-            src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2200&q=90"
-            alt="Peças e componentes automotivos em uma oficina"
-            fetchPriority="high"
-          />
-          <div className="photo-shade" />
-          <div className="container hero-banner-inner">
-            <div className="hero-content">
+        <div className="container home-hero-grid">
+          <div className="home-hero-promo">
+            <div className="home-hero-copy">
               <Eyebrow>Sua parceira automotiva</Eyebrow>
-              <h1>
-                A peça certa para você <em>seguir em frente.</em>
-              </h1>
+              <h1>A peça certa para o seu carro</h1>
               <p className="hero-copy">
-                Encontre peças e acessórios automotivos para cuidar do seu
-                veículo. Conte com a SP Auto Peças em Vila dos Cabanos,
-                Barcarena.
+                Peças e acessórios para manutenção e reposição. Explore o catálogo
+                e consulte a equipe sobre a aplicação correta para seu veículo.
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#/catalogo">
-                  Explorar catálogo <ArrowRight size={17} />
+                <a className="button button-amber" href="#/catalogo">
+                  Ver catálogo <ArrowRight size={17} />
                 </a>
-                <a className="button button-outline" href="#/localizacao">
-                  Visite nossa loja
+                <a className="button button-outline" href="#/dicas">
+                  Como identificar uma peça
                 </a>
               </div>
               <div className="trust-line">
                 <span className="trust-icon"><Check size={18} /></span>
-                <span>
-                  Atendimento próximo e orientação para encontrar a peça ideal.
-                </span>
+                <span>Confirme compatibilidade, preço e disponibilidade antes de comprar.</span>
               </div>
             </div>
           </div>
-          <div className="floating-card">
-            <span className="floating-icon"><ShieldCheck size={23} /></span>
-            <span>
-              <b>Confiança em cada escolha</b>
-              <small>Atendimento na sua região</small>
-            </span>
+          <div className="home-hero-side">
+            <article className="home-hero-side-card">
+              <span className="home-hero-side-icon"><Wrench size={24} /></span>
+              <h2>Troca de óleo</h2>
+              <p>Óleo, filtros e itens de revisão para consultar conforme seu veículo.</p>
+              <a href="#/catalogo">Ver itens <ArrowUpRight size={15} /></a>
+            </article>
+            <article className="home-hero-side-card home-hero-side-accent">
+              <span className="home-hero-side-icon"><ShieldCheck size={24} /></span>
+              <h2>Não sabe qual peça?</h2>
+              <p>Reúna marca, modelo e ano. Uma foto da peça antiga também pode ajudar na consulta.</p>
+              <a href="#/dicas">Como identificar <ArrowUpRight size={15} /></a>
+            </article>
           </div>
+        </div>
+      </section>
+
+      <section className="vehicle-finder-section" aria-labelledby="vehicle-finder-title">
+        <div className="container vehicle-finder">
+          <div className="vehicle-finder-heading">
+            <h2 id="vehicle-finder-title">Peça para o seu veículo</h2>
+            <p>Informe os dados básicos para preparar uma consulta pelo WhatsApp.</p>
+          </div>
+          <form
+            className="vehicle-finder-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              const values = new FormData(event.currentTarget);
+              const brand = values.get("vehicle-brand").toString().trim();
+              const model = values.get("vehicle-model").toString().trim();
+              const year = values.get("vehicle-year").toString().trim();
+              const message = [
+                "Olá, SP Auto Peças! Gostaria de consultar uma peça para meu veículo.",
+                "",
+                `Marca: ${brand}`,
+                `Modelo: ${model}`,
+                `Ano: ${year}`,
+                "",
+                "Poderiam me ajudar a identificar a peça correta e confirmar preço e disponibilidade?",
+              ].join("\n");
+              window.open(
+                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
+            }}
+          >
+            <label>Marca<input name="vehicle-brand" placeholder="Ex.: Fiat" autoComplete="off" required /></label>
+            <label>Modelo<input name="vehicle-model" placeholder="Ex.: Uno" autoComplete="off" required /></label>
+            <label>Ano<input name="vehicle-year" placeholder="Ex.: 2018" inputMode="numeric" pattern="[0-9]{4}" required /></label>
+            <button className="button button-primary" type="submit">Consultar no WhatsApp <ArrowUpRight size={16} /></button>
+          </form>
         </div>
       </section>
 
@@ -126,8 +186,28 @@ export default function Home() {
             </a>
           </div>
           <div className="category-grid">
-            {categories.slice(0, 4).map((category) => (
+            {categories.slice(0, 6).map((category) => (
               <CategoryCard category={category} key={category.title} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="featured-products-section section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <Eyebrow>Itens de referência</Eyebrow>
+              <h2>Produtos em destaque</h2>
+              <p>Exemplos de peças para facilitar sua busca. Preços e estoque são confirmados com a loja.</p>
+            </div>
+            <a className="button button-outline heading-link" href="#/catalogo">
+              Ver catálogo completo <ArrowRight size={16} />
+            </a>
+          </div>
+          <div className="featured-product-grid">
+            {products.slice(0, 8).map((product) => (
+              <FeaturedProductCard product={product} key={product.name} />
             ))}
           </div>
         </div>
