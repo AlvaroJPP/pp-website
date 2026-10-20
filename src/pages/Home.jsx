@@ -174,7 +174,7 @@ export default function Home() {
               { name: "Kia", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/KIA_logo3.svg" },
               { name: "Renault", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_2021.svg" },
               { name: "Ford", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ford_logo_flat.svg" },
-            ].map((brand) => (            ].map((brand) => (
+            ].map((brand) => (
               <span className="vehicle-brand-name" key={brand.name} title={brand.name}>
                 <img
                   src={brand.logo}
