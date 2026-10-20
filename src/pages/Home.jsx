@@ -170,9 +170,9 @@ export default function Home() {
               { name: "Hyundai", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Hyundai_Motor_Company_logo.svg" },
               { name: "Honda", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Honda_Logo.svg" },
               { name: "Nissan", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Nissan_2020_logo.svg" },
-              { name: "Peugeot", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Peugeot_2021_Logo.svg" },
+              { name: "Peugeot", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Wordmark_Peugeot_2021.svg" },
               { name: "Kia", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/KIA_logo3.svg" },
-              { name: "Renault", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_2021_logo.svg" },
+              { name: "Renault", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_2021.svg" },
               { name: "Ford", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ford_logo_flat.svg" },
             ].map((brand) => (            ].map((brand) => (
               <span className="vehicle-brand-name" key={brand.name} title={brand.name}>
