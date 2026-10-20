@@ -3966,3 +3966,61 @@ main,
 .home-location-inner {
   border-left: 0 !important;
 }
+
+
+/* Vehicle makes served by the store */
+.vehicle-brands-section {
+  padding: 34px 0;
+  background: #ffffff;
+}
+.vehicle-brands-heading {
+  margin: 0 auto 20px;
+  max-width: 720px;
+  text-align: center;
+}
+.vehicle-brands-heading .eyebrow {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: #c92522;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.vehicle-brands-heading h2 {
+  margin: 0 0 8px;
+  color: #171c26;
+  font-size: clamp(22px, 3vw, 30px);
+}
+.vehicle-brands-heading p {
+  margin: 0;
+  color: #687181;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.vehicle-brands-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.vehicle-brand-name {
+  display: inline-flex;
+  min-width: 105px;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 17px;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #171c26;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .vehicle-brands-section { padding: 27px 0; }
+  .vehicle-brands-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .vehicle-brand-name { min-width: 0; min-height: 43px; padding: 9px; font-size: 14px; }
+}
