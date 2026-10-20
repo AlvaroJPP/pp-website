@@ -17,8 +17,8 @@ export const categories = [
     title: "Peças automotivas",
     description: "Componentes para manutenção e reposição de diferentes veículos.",
     examples: "Peças de reposição, correias, componentes e itens de manutenção.",
-    image: "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=900&q=80",
-    alt: "Foto ilustrativa de componentes automotivos.",
+    image: "https://cdn.pixabay.com/photo/2017/09/30/03/40/spark-plug-2801172_1280.jpg",
+    alt: "Vela de ignição automotiva sobre fundo branco; imagem ilustrativa do Pixabay.",
     keywords: "peças automotivas reposição correias manutenção",
   },
   {
@@ -69,8 +69,8 @@ export const products = [
     category: "Motor e filtros",
     description: "Ajuda a reter partículas do óleo do motor; a especificação depende do veículo.",
     keywords: "filtro lubrificante revisão troca óleo motor",
-    image: "https://images.unsplash.com/photo-1717068341263-33331ec8104c?auto=format&fit=crop&w=900&q=80",
-    alt: "Foto ilustrativa de componentes para manutenção do motor.",
+    image: "https://cdn.pixabay.com/photo/2015/10/18/21/41/oil-filter-995249_1280.jpg",
+    alt: "Filtro de óleo automotivo fotografado sobre fundo claro; imagem ilustrativa do Pixabay.",
   },
   {
     name: "Filtro de ar do motor",
@@ -197,8 +197,8 @@ export const products = [
     category: "Elétrica e iluminação",
     description: "Compare dimensões, capacidade, polaridade e especificação recomendada.",
     keywords: "bateria elétrica partida amperagem",
-    image: "https://images.unsplash.com/photo-1693718641851-fd3ac0b7af4e?auto=format&fit=crop&w=900&q=80",
-    alt: "Foto ilustrativa do compartimento do motor e sistema elétrico.",
+    image: "https://cdn.pixabay.com/photo/2015/10/18/21/41/battery-995257_1280.jpg",
+    alt: "Bateria automotiva fotografada sobre fundo claro; imagem ilustrativa do Pixabay.",
   },
   {
     name: "Lâmpada de farol",
