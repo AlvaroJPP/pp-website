@@ -464,7 +464,7 @@ export default function Catalogo() {
           )}
 
           <div className="catalog-note">
-            <strong>Importante:</strong> os produtos exibidos são referências de categorias comuns, não representam o estoque real da loja. Preços, marcas, disponibilidade e compatibilidade devem ser confirmados diretamente com a SP Auto Peças.
+            <strong>Importante:</strong> as fotografias são ilustrativas e vêm de bancos de imagens; podem não mostrar exatamente o item anunciado. Os produtos exibidos são referências de categorias comuns e não representam o estoque real da loja. Preços, marcas, disponibilidade e compatibilidade devem ser confirmados diretamente com a SP Auto Peças.
           </div>
 
           <div className="catalog-help-panel">
